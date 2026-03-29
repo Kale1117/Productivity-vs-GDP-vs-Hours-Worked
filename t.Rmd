@@ -99,12 +99,9 @@ animate(p, nframes = 80, fps = 8)
 
 ```
 
-\- There is a negative relationship between working hours and
-productivity, where countries with fewer working hours tend to have
-higher productivity levels and higher GDP growth.\
-\
-- There is noticeable dispersion in the data, suggesting that other
-economic factors also influence productivity beyond working hours alone.
+- *There is a consistent negative relationship between working hours and productivity across most years, where countries with fewer working hours tend to achieve higher productivity.*
+
+- *Over time, countries with higher productivity often correspond to larger point sizes, indicating stronger **GDP growth**, although some variation remains.*
 
 ### Conclusion
 
