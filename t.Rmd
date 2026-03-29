@@ -29,7 +29,7 @@ The dataset is sourced from Our World in Data, which compiles internationally co
 
 ```{r , include=FALSE}
 #load dataset 
-data <- read_csv("productivity vs hours worked vs GDP growth.csv") 
+data <- read_csv("Data/productivity vs hours worked vs GDP growth.csv") 
 variable_table <- data.frame( Variable = c("Country", "Hours_Worked", "Productivity", "GDP_Growth"), Description = c( "Country name (categorical variable)", "Average annual hours worked per worker", "GDP per hour worked (labour productivity)", "Annual GDP growth rate (%)" ) )
 
 kable(variable_table, caption = "Table 1: Description of Variables")
@@ -50,24 +50,24 @@ str(data[1:2, ])
 ```
 
 ```{r , include=FALSE}
-# Select relevant variables and compute summary stats 
+# Table 
 summary_table <- data %>% 
   select(Entity,
          `Annual working hours per worker`,
-         `Productivity: output per hour worked`) %>%  
+         `Productivity: output per hour worked`,
+         `GDP growth observations`) %>%  
   group_by(Entity) %>%   
   summarise(
     avg_hours = mean(`Annual working hours per worker`, na.rm = TRUE),
-    avg_productivity = mean(`Productivity: output per hour worked`, na.rm = TRUE)
+    avg_productivity = mean(`Productivity: output per hour worked`, na.rm = TRUE),
+    avg_gdp_growth = mean(`GDP growth observations`, na.rm = TRUE)
   ) %>% 
   head(10)
-
-kable(summary_table, caption = "Table 2: Average Hours Worked and Productivity by Country")
 ```
 
 Countries with lower average working hours often display higher
 productivity levels, suggesting a more **efficient** allocation of
-labour resources. Additionally, working hours show a mixed relationship with GDP growth that varies across countries and years.
+labour resources. Additionlly, working hours show an inverse relationship with GDP growth, where higher working hours do not consistently translate into stronger economic performance.
 
 ```{r}
 p <- ggplot(data, aes(
