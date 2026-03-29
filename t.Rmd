@@ -67,19 +67,19 @@ str(data[1:2, ])
 ```
 
 ```{r , include=FALSE}
-# Select relevant variables and compute summary stats 
+# Table 
 summary_table <- data %>% 
   select(Entity,
          `Annual working hours per worker`,
-         `Productivity: output per hour worked`) %>%  
+         `Productivity: output per hour worked`,
+         `GDP growth observations`) %>%  
   group_by(Entity) %>%   
   summarise(
     avg_hours = mean(`Annual working hours per worker`, na.rm = TRUE),
-    avg_productivity = mean(`Productivity: output per hour worked`, na.rm = TRUE)
+    avg_productivity = mean(`Productivity: output per hour worked`, na.rm = TRUE),
+    avg_gdp_growth = mean(`GDP growth observations`, na.rm = TRUE)
   ) %>% 
   head(10)
-
-kable(summary_table, caption = "Table 2: Average Hours Worked and Productivity by Country")
 ```
 
 Countries with lower average working hours often display higher
