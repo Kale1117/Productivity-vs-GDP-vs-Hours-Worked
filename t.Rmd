@@ -93,18 +93,26 @@ p <- ggplot(data, aes(
   colour = Entity,
   size = `GDP growth observations`
 )) +
-  geom_point(alpha = 0.7) +
+  geom_point(alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE, colour = "black", linetype = "dashed") +
   labs(
-    title = 'Year: {frame_time}',
+    title = 'Working Hours vs Productivity (Year: {frame_time})',
+    subtitle = "Dashed line indicates overall trend",
     x = "Annual Working Hours per Worker",
     y = "Productivity (GDP per Hour Worked)",
-    caption = "Scatter plot showing working hours, productivity, and GDP growth (2015–2023)"
+    size = "GDP Growth (%)",
+    caption = "Enhanced animated scatter plot with trend line (2015–2023)"
   ) +
   theme_minimal() +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(face = "bold"),
+    plot.subtitle = element_text(size = 10)
+  ) +
   transition_time(Year) +
   ease_aes('linear')
 
-animate(p, nframes = 100, fps = 10)
+animate(p, nframes = 80, fps = 8)
 
 ```
 
