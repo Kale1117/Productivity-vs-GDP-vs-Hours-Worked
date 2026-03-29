@@ -46,7 +46,7 @@ economic growth.
 
 ```{r , include=FALSE}
 #load dataset 
-data <- read_csv("productivity vs hours worked vs GDP growth.csv") 
+data <- read_csv("Data/productivity vs hours worked vs GDP growth.csv") 
 variable_table <- data.frame( Variable = c("Country", "Hours_Worked", "Productivity", "GDP_Growth"), Description = c( "Country name (categorical variable)", "Average annual hours worked per worker", "GDP per hour worked (labour productivity)", "Annual GDP growth rate (%)" ) )
 
 kable(variable_table, caption = "Table 1: Description of Variables")
