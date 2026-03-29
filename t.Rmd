@@ -23,26 +23,9 @@ library(gganimate)
 
 # Introduction
 
-This report attempts to answer following questions:
+This report investigates the relationship between annual working hours, labour productivity, and economic growth across countries from 2015 to 2023. Specifically, it examines whether countries with lower working hours achieve higher productivity and whether higher productivity is associated with stronger GDP growth.
 
-**How do annual working hours influence labour productivity across
-countries?**\
-
-**Is higher productivity associated with stronger economic growth?**
-
-This dataset examines the relationship between labour productivity,
-annual working hours, and economic growth across multiple countries from
-2015 to 2023. The data was sourced from Our World in Data , which
-compiles global economic indicators from institutions such as the World
-Bank and OECD.
-
-The dataset includes four variables: Country, annual hours worked,
-labour productivity (GDP per hour worked), and GDP growth (%). Country
-is a categorical variable identifying each nation, while the remaining
-variables are numerical and measure labour input, economic efficiency,
-and economic performance respectively. Together, these variables enable
-analysis of how work intensity relates to productivity and overall
-economic growth.
+The dataset is sourced from Our World in Data, which compiles internationally comparable economic indicators from institutions such as the World Bank and OECD. It includes four variables: country (categorical), annual working hours, labour productivity (GDP per hour worked), and GDP growth (all numerical). These variables allow for an evaluation of how labour input and efficiency influence overall economic performance.
 
 ```{r , include=FALSE}
 #load dataset 
