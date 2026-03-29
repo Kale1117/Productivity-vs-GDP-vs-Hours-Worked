@@ -23,26 +23,9 @@ library(gganimate)
 
 # Introduction
 
-This report attempts to answer following questions:
+This report investigates the relationship between annual working hours, labour productivity, and economic growth across countries from 2015 to 2023. Specifically, it examines whether countries with lower working hours achieve higher productivity and whether higher productivity is associated with stronger GDP growth.
 
-**How do annual working hours influence labour productivity across
-countries?**\
-
-**Is higher productivity associated with stronger economic growth?**
-
-This dataset examines the relationship between labour productivity,
-annual working hours, and economic growth across multiple countries from
-2015 to 2023. The data was sourced from Our World in Data , which
-compiles global economic indicators from institutions such as the World
-Bank and OECD.
-
-The dataset includes four variables: Country, annual hours worked,
-labour productivity (GDP per hour worked), and GDP growth (%). Country
-is a categorical variable identifying each nation, while the remaining
-variables are numerical and measure labour input, economic efficiency,
-and economic performance respectively. Together, these variables enable
-analysis of how work intensity relates to productivity and overall
-economic growth.
+The dataset is sourced from Our World in Data, which compiles internationally comparable economic indicators from institutions such as the World Bank and OECD. It includes four variables: country (categorical), annual working hours, labour productivity (GDP per hour worked), and GDP growth (all numerical). These variables allow for an evaluation of how labour input and efficiency influence overall economic performance.
 
 ```{r , include=FALSE}
 #load dataset 
@@ -84,7 +67,7 @@ summary_table <- data %>%
 
 Countries with lower average working hours often display higher
 productivity levels, suggesting a more **efficient** allocation of
-labour resources. Additionally, working hours show an inverse relationship with GDP growth, where higher working hours do not consistently translate into stronger economic performance.
+labour resources. Additionlly, working hours show an inverse relationship with GDP growth, where higher working hours do not consistently translate into stronger economic performance.
 
 ```{r}
 p <- ggplot(data, aes(
@@ -93,27 +76,32 @@ p <- ggplot(data, aes(
   colour = Entity,
   size = `GDP growth observations`
 )) +
-  geom_point(alpha = 0.7) +
+  geom_point(alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE, colour = "black", linetype = "dashed") +
   labs(
-    title = 'Year: {frame_time}',
+    title = 'Working Hours vs Productivity (Year: {frame_time})',
+    subtitle = "Dashed line indicates overall trend",
     x = "Annual Working Hours per Worker",
     y = "Productivity (GDP per Hour Worked)",
-    caption = "Scatter plot showing working hours, productivity, and GDP growth (2015–2023)"
+    size = "GDP Growth (%)",
+    caption = "Enhanced animated scatter plot with trend line (2015–2023)"
   ) +
   theme_minimal() +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(face = "bold"),
+    plot.subtitle = element_text(size = 10)
+  ) +
   transition_time(Year) +
   ease_aes('linear')
 
-animate(p, nframes = 100, fps = 10)
+animate(p, nframes = 80, fps = 8)
 
 ```
 
-\- There is a negative relationship between working hours and
-productivity, where countries with fewer working hours tend to have
-higher productivity levels and higher GDP growth.\
-\
-- There is noticeable dispersion in the data, suggesting that other
-economic factors also influence productivity beyond working hours alone.
+- *There is a consistent negative relationship between working hours and productivity across most years, where countries with fewer working hours tend to achieve higher productivity.*
+
+- *Over time, countries with higher productivity often correspond to larger point sizes, indicating stronger **GDP growth**, although some variation remains.*
 
 ### Conclusion
 
