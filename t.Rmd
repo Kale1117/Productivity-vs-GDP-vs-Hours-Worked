@@ -84,9 +84,7 @@ summary_table <- data %>%
 
 Countries with lower average working hours often display higher
 productivity levels, suggesting a more **efficient** allocation of
-labour resources. Additionally, working hours shows an inverse effect on
-GDP growth where higher working hours doesn't consistently translate to
-higher GDP growth. .
+labour resources. Additionally, working hours show an inverse relationship with GDP growth, where higher working hours do not consistently translate into stronger economic performance.
 
 ```{r}
 p <- ggplot(data, aes(
