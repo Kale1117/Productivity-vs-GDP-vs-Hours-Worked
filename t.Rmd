@@ -67,7 +67,7 @@ kable(summary_table, caption = "Table 2: Average Hours Worked and Productivity b
 
 Countries with lower average working hours often display higher
 productivity levels, suggesting a more **efficient** allocation of
-labour resources. Additionally, working hours show a weak and inconsistent relationship with GDP growth across countries.
+labour resources. Additionally, working hours show a mixed relationship with GDP growth that varies across countries and years.
 
 ```{r}
 p <- ggplot(data, aes(
